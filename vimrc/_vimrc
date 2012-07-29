@@ -109,6 +109,9 @@ set lazyredraw
 
 "use mouse everywhere
 set mouse=a
+" Hide mouse pointer while typing
+set mousehide
+set mousemodel=popup
 
 autocmd BufNewFile,BufRead *.txt setlocal autoindent
 autocmd BufNewFile,BufRead *.txt setlocal fo=n
@@ -141,10 +144,14 @@ set background=dark
 "turn on syntax highlighting
 syntax on
 
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 colorscheme solarized
 
-"try to determine file type bsed on name and contents (allow auto-indenting)
-filetype indent plugin on
+
+filetype on
 
 filetype plugin on
 filetype indent on
@@ -199,7 +206,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 
-"format statusline: buffer number, file name, position in file, 
+"format statusline: buffer number, file name, position in file,
 "set statusline=%2*%n\|%<%*%-.40F%2*\|\ %2*%M\ %3*%=%1*\%1*%{&filetype}%2.6l%2*x%1*%1.9(%c%V%)%2*[%1*%P%2*]%1*%2B
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
@@ -211,12 +218,8 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <Esc><<i
 
-
 "space to select word in visual
 vnoremap <space> viw
-
-nnoremap <leader>- ddp
-nnoremap <leader>_ ddkkp
 
 "easily edit vimrc on ,ev
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -229,8 +232,6 @@ inoremap jk <esc>
 "nnoremap <Down> <nop>
 "nnoremap <Left> <nop>
 "nnoremap <Right> <nop>
-
-inoremap <C-c> <nop>
 
 "no more :w since ;w is much faster to type
 nnoremap ; :
@@ -276,26 +277,34 @@ autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " Omni completion settings
 au FileType c  setlocal completefunc=ccomplete#Complete
+
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
 au FileType html setlocal completefunc=htmlcomplete#CompleteTags
 autocmd filetype html,xml set listchars-=tab:>.
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+
   "au FileType js setlocal completefunc=javascriptcomplete#CompleteJS
 au FileType php setlocal completefunc=phpcomplete#CompletePHP
+
 au FileType python setlocal completefunc=pythoncomplete#Complete
 autocmd filetype python set expandtab
   "au FileType ruby setlocal completefunc=rubycomplete#Complete
   "au FileType sql setlocal completefunc=sqlcomplete#Complete
   "au FileType *  setlocal completefunc=syntaxcomplete#Complete
   "au FileType xml setlocal completefunc=xmlcomplete#CompleteTags
+  "
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
+"auto update ctags
+au BufWritePost *.c,*.cpp,*.h !ctags -R
 
 "when in insert mode, ready to paste, if you press <F2>, Vim will switch to
 "paste mode, disabling all kinds of smartness and just pasting a whole buffer of
 "text. Then, you can disable paste mode again with another press of <F2>
 set pastetoggle=<F2>
 
-" cmake support
-" -------------
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+" Turn off annoying swapfiles
+set noswapfile
 
-
+set formatoptions-=o "dont continue comments when pushing o/O
 

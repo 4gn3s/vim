@@ -7,9 +7,20 @@
 
 # hlsearch on (H) or off (h):
 ~H
+# Last Search Pattern:
+~MSle0~/ctags
+
 # Command Line History (newest to oldest):
+:q
+:w
+:TlistToggle
+:TListToggle
+:help taglist
+:w!
 
 # Search String History (newest to oldest):
+?/ctags
+? \<set\>
 
 # Expression History (newest to oldest):
 
@@ -18,9 +29,36 @@
 # Input Line History (newest to oldest):
 
 # Registers:
+"1	LINE	0
+	"Git
+"2	CHAR	0
+	set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)% )
+"3	LINE	0
+	set statusline=[%l,%v\ %P%M][CWD:\ %{getcwd()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}\ %#warningmsg#*
+"4	LINE	0
+	set ruler
+"5	LINE	0
+	"set background=dark
+"6	CHAR	0
+	colorscheme solarized
+	
+"7	CHAR	0
+	" cmake support
+	" -------------
+	
+"8	CHAR	0
+	" cmake support
+	" -------------
+	autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+	
+"9	CHAR	0
+	inoremap <C-c> <nop>
+	
+""-	CHAR	0
+	w
 
 # File marks:
-'0  362  32  C:\Users\Agnieszka\Downloads\python.vim
+'0  223  0  ~\_vimrc
 '1  1  0  ~\_vimrc
 '2  1  0  C:\Users\Agnieszka\.gitconfig
 '3  1  0  ~\_vimrc~
@@ -29,11 +67,35 @@
 '6  25  2  C:\Users\Agnieszka\Desktop\genetics.js
 '7  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
 '8  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
+'9  1  0  ~\_vimrc
 
 # Jumplist (newest first):
--'  362  32  C:\Users\Agnieszka\Downloads\python.vim
--'  1  0  C:\Users\Agnieszka\Downloads\python.vim
--'  1  0  ~\_vimrc
+-'  223  0  ~\_vimrc
+-'  222  17  ~\_vimrc
+-'  213  0  ~\_vimrc
+-'  284  194  ~\_vimrc
+-'  123  22  ~\_vimrc
+-'  124  33  ~\_vimrc
+-'  137  0  ~\_vimrc
+-'  126  0  ~\_vimrc
+-'  96  0  ~\_vimrc
+-'  214  4  ~\_vimrc
+-'  215  4  ~\_vimrc
+-'  152  0  ~\_vimrc
+-'  296  0  ~\_vimrc
+-'  114  20  ~\_vimrc
+-'  309  0  ~\_vimrc
+-'  250  0  ~\_vimrc
+-'  248  0  ~\_vimrc
+-'  242  0  ~\_vimrc
+-'  237  0  ~\_vimrc
+-'  304  0  ~\_vimrc
+-'  283  0  ~\_vimrc
+-'  290  0  ~\_vimrc
+-'  75  0  ~\_vimrc
+-'  78  0  ~\_vimrc
+-'  80  17  ~\_vimrc
+-'  1  3  ~\_vimrc
 -'  1  0  C:\Users\Agnieszka\.gitconfig
 -'  1  0  ~\_vimrc~
 -'  1  0  ~\.vimrc
@@ -96,62 +158,123 @@
 -'  1  0  C:\Users\Agnieszka\Desktop\genetics.js
 -'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
 -'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  25  2  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  69  0  C:\Users\Agnieszka\Desktop\imageevolve.js
--'  1  0  C:\Users\Agnieszka\Desktop\imageevolve.js
--'  25  2  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  25  2  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Users\Agnieszka\Desktop\genetics.js
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Program Files\Vim\vim73\colors\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  C:\Users\Agnieszka\Desktop\list. Use <span class=
--'  1  0  ~\.vimrc
--'  69  0  C:\Users\Agnieszka\Desktop\imageevolve.js
--'  1  0  ~\_vimrc
 
 # Buffer list:
-%C:\Users\Agnieszka\Downloads\python.vim	362	32
+%~\_vimrc	223	0
 
 # History of marks within files (newest to oldest):
 
-> C:\Users\Agnieszka\Downloads\python.vim
-	"	362	32
-
 > ~\_vimrc
+	"	223	0
+	^	222	18
+	.	222	0
+	+	1	0
+	+	80	17
+	+	79	0
+	+	81	0
+	+	79	0
+	+	76	12
+	+	79	30
+	+	81	0
+	+	78	1
+	+	72	0
+	+	72	31
+	+	73	0
+	+	70	16
+	+	73	78
+	+	290	0
+	+	283	0
+	+	304	0
+	+	303	71
+	+	237	0
+	+	236	42
+	+	240	0
+	+	239	76
+	+	248	0
+	+	250	0
+	+	249	28
+	+	305	0
+	+	306	0
+	+	213	0
+	+	214	0
+	+	214	97
+	+	214	0
+	+	214	0
+	+	214	0
+	+	214	0
+	+	213	78
+	+	309	0
+	+	115	0
+	+	220	0
+	+	224	0
+	+	236	0
+	+	235	0
+	+	306	0
+	+	299	0
+	+	299	0
+	+	305	0
+	+	147	0
+	+	147	0
+	+	148	0
+	+	149	0
+	+	150	0
+	+	147	0
+	+	148	0
+	+	149	0
+	+	150	0
+	+	311	0
+	+	213	80
+	+	214	143
+	+	214	0
+	+	214	4
+	+	215	0
+	+	214	0
+	+	213	0
+	+	299	0
+	+	298	17
+	+	284	194
+	+	284	0
+	+	284	81
+	+	281	0
+	+	287	61
+	+	285	0
+	+	294	65
+	+	284	81
+	+	285	0
+	+	154	9
+	+	153	0
+	+	209	62
+	+	213	0
+	+	222	0
+
+> C:\Program Files\Vim\vimfiles\bundle\taglist\doc\taglist.txt
 	"	1	0
 
-> C:\Users\Agnieszka\.gitconfig
+> C:\Program Files\Vim\vim73\doc\eval.txt
+	"	5710	22
+
+> C:\Program Files\Vim\vim73\doc\__Tag_List__
+	"	1	0
+	.	1	0
+	+	1	0
+
+> C:\Program Files\Vim\vimfiles\bundle\vim-css-color\after\syntax\sass.vim
 	"	1	0
 
-> ~\_vimrc~
+> E:\PRAKTYKA\Vim\vim73\vimrc\_vimrc
+	"	197	0
+
+> C:\Program Files\Vim\vimfiles\bundle\vim-css-color\.gitignore
 	"	1	0
 
-> ~\.vimrc
-	"	1	0
+> C:\Program Files\Vim\vimfiles\bundle\syntastic\syntax_checkers\c.vim
+	"	158	0
 
-> C:\Users\Agnieszka\Desktop\imageevolve.js
-	"	69	0
+> C:\Program Files\Vim\vimfiles\bundle\syntastic\syntax_checkers\cuda.vim
+	"	21	0
 
-> C:\Users\Agnieszka\Desktop\genetics.js
-	"	25	2
+> C:\Program Files\Vim\vimfiles\.git\config
+	"	10	34
+	^	10	35
+	.	10	34
+	+	10	34

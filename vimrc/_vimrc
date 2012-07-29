@@ -1,0 +1,301 @@
+set nocompatible 
+
+"allows to switch from an unsaved buffer without saving it, also undo history
+"in multiple files
+set hidden
+
+" Use pathogen to load plugins from bundle directory
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+"show partial commands in the bottom line of the screen, always show it
+set showcmd
+set cmdheight=1
+set laststatus=2
+
+"show file in titlebar
+set title
+
+"keep 5 lines of text above/below when near top/bottom of the buffer
+set scrolloff=5
+
+"display cursor position on the bottom line
+set ruler
+
+"visual bell instead of beeping on error
+set visualbell
+set noerrorbells
+
+"better command line completion
+set wildmenu
+set laststatus=2
+set backspace=2
+
+"some sort of autoindenting occur
+set autoindent
+set tabstop=4
+"set textwidth=80
+
+"find the next match as we type the search
+set incsearch
+"highlight searches
+set hlsearch
+"case insensitive search
+set ignorecase
+set smartcase
+
+"set shellpipe=2>&1\ \|\ tee\ %s"
+"set shellpipe=">"
+set fileencodings=ucs-bom,utf-8,cp1250,latin2
+set encoding=utf-8
+
+"spaces instead of tabs
+set expandtab
+
+"reload files changed outside vim
+set autoread
+
+"what mode you're in
+set showmode
+
+"show matching brackets
+set showmatch
+
+"wrap lines rahter than horizontal scrolling
+set wrap
+"try not to wrap in the middle of the word
+set linebreak
+"80- character line limit
+set textwidth=80
+
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+
+set cino+=l1
+set cino+=g0
+
+"allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+"display >>> when breaking line
+set showbreak=>>>
+
+"color margin at 80
+set colorcolumn=80
+
+set foldmethod=syntax
+"set foldnestmax=1
+set errorformat+=%Dmingw32-make.exe[%*\\d]:\ Entering\ directory\ `%f'
+set errorformat+=%Dmingw32-make.exe:\ Entering\ directory\ `%f'
+set errorformat+=%Xmingw32-make.exe[%*\\d]:\ Leaving\ directory
+set errorformat+=%Xmingw32-make.exe:\ Leaving\ directory
+"set errorformat=%*[^\ ]\ %t%n\ %f\ %l:\ %m
+"set errorformat=%t%*[^\ ]\ %f\ %l:\ %m
+lang C
+
+"display line numbers
+set number
+set numberwidth=4
+
+set lcs=tab:\|-,trail:~,nbsp:%,extends:>,precedes:<
+set list
+
+"highlightes line & column of the cursor
+set cul
+
+"don't redraw while running macros- faster!
+set lazyredraw
+
+"use mouse everywhere
+set mouse=a
+
+autocmd BufNewFile,BufRead *.txt setlocal autoindent
+autocmd BufNewFile,BufRead *.txt setlocal fo=n
+autocmd BufNewFile,BufRead *.txt setlocal syntax=rst
+autocmd BufNewFile,BufRead *.txt setlocal flp=^\\s*[*+-]\\s\\+\\\\|^\\s*\\d\\+[\\]:.)}]\\=\\s\\+\\\\|^\\s*\\a[\\]:.)}]\\s\\+\\\\|^\\s*\\.\\.\\s\\+\\\\|^\\s*#\\+[\\]:.)}]\\=\\s\\+
+autocmd BufNewFile,BufRead *.eml setlocal fo=n
+autocmd BufNewFile,BufRead *.eml setlocal flp=^\\s*[*+-]\\s\\+\\\\|^\\s*\\d\\+[\\]:.)}]\\=\\s\\+\\\\|^\\s*\\a[\\]:.)}]\\s\\+\\\\|^\\s*\\.\\.\\s\\+\\\\|^\\s*#\\+[\\]:.)}]\\=\\s\\+
+
+"automatically update ctags
+au BufWritePost *.c, *.cpp, *.h !ctags -R &
+
+set fileformat=dos
+
+" for eclim
+let g:EclimDisabled=1
+let g:EclimXmlValidate=0
+
+"Center page on the next/previous search
+noremap N Nzz
+noremap n nzz
+
+
+set background=dark
+"if ! has('gui_running')
+"else
+"    let g:solarized_termcolors=16
+"    let g:solarized_termcolors=256
+"endif
+
+"turn on syntax highlighting
+syntax on
+
+colorscheme solarized
+
+"try to determine file type bsed on name and contents (allow auto-indenting)
+filetype indent plugin on
+
+filetype plugin on
+filetype indent on
+
+function! UTF8Start()
+	setlocal encoding=utf-8
+	setlocal termencoding=cp1250
+	setlocal fileencoding=
+endfunction
+
+function! UTF8Stop()
+	setlocal encoding=cp1250
+	setlocal termencoding=
+	setlocal fileencoding=
+endfunction
+
+set ai                  "  auto indent
+set si                  "  smart indent
+set ci                  "  C/C++ indents
+set cin                 " -
+
+"" Don't hlsearch, but when I do search for something set hlsearch, then
+"" remove it when entering insert mode
+set nohlsearch
+noremap <leader>sss /
+map / :set hlsearch<CR><leader>sss
+au InsertEnter * :set nohlsearch
+
+" DelimitMate
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_balace_matchpairs = 1
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+"fugitive mappings - git
+map <leader>gd :Gdiff<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gw :Gwrite<CR>
+map <leader>gl :Glog<CR>
+
+"Restore cursor to file position in previous editing session
+set viminfo='10,\"100,:20,%,n~/.viminfo
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+"auto change pwd when opening a file/ switching buffers
+set autochdir
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+"format statusline: buffer number, file name, position in file, 
+"set statusline=%2*%n\|%<%*%-.40F%2*\|\ %2*%M\ %3*%=%1*\%1*%{&filetype}%2.6l%2*x%1*%1.9(%c%V%)%2*[%1*%P%2*]%1*%2B
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+
+"map shift + tab to inverse-tab
+" for command mode
+nnoremap <S-Tab> <<
+" for insert mode
+inoremap <S-Tab> <Esc><<i
+
+
+"space to select word in visual
+vnoremap <space> viw
+
+nnoremap <leader>- ddp
+nnoremap <leader>_ ddkkp
+
+"easily edit vimrc on ,ev
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"reload settings on ,sv
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+inoremap jk <esc>
+
+"nnoremap <Up> <nop>
+"nnoremap <Down> <nop>
+"nnoremap <Left> <nop>
+"nnoremap <Right> <nop>
+
+inoremap <C-c> <nop>
+
+"no more :w since ;w is much faster to type
+nnoremap ; :
+
+"for text wrapped line, pressing j jumps to the wrapped line, instead of next
+nnoremap j gj
+nnoremap k gk
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"clear highlight search on ,/
+nmap <silent> ,/ :nohlsearch<CR>
+
+"ABBREVIATIONS
+iabbrev adn and
+iabbrev rigth right
+iabbrev Rigth Right
+iabbrev heigth height
+iabbrev Heigth Height
+iabbrev widht width
+iabbrev Widht Width
+iabbrev waht what
+iabbrev tehn then
+iabbrev teh the
+
+"FILETYPES
+
+" C/C++
+autocmd FileType c,cpp,cc set cindent comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
+
+" PHP
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+" X?HTML & XML
+autocmd FileType html,xhtml,xml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" CSS
+autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+" Omni completion settings
+au FileType c  setlocal completefunc=ccomplete#Complete
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType html setlocal completefunc=htmlcomplete#CompleteTags
+autocmd filetype html,xml set listchars-=tab:>.
+  "au FileType js setlocal completefunc=javascriptcomplete#CompleteJS
+au FileType php setlocal completefunc=phpcomplete#CompletePHP
+au FileType python setlocal completefunc=pythoncomplete#Complete
+autocmd filetype python set expandtab
+  "au FileType ruby setlocal completefunc=rubycomplete#Complete
+  "au FileType sql setlocal completefunc=sqlcomplete#Complete
+  "au FileType *  setlocal completefunc=syntaxcomplete#Complete
+  "au FileType xml setlocal completefunc=xmlcomplete#CompleteTags
+
+"when in insert mode, ready to paste, if you press <F2>, Vim will switch to
+"paste mode, disabling all kinds of smartness and just pasting a whole buffer of
+"text. Then, you can disable paste mode again with another press of <F2>
+set pastetoggle=<F2>
+
+" cmake support
+" -------------
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
+
+

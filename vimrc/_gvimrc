@@ -1,0 +1,35 @@
+"set lines=46
+set guioptions-=T
+set guioptions-=m
+"set columns=122
+"set columns=80
+"let winManagerWindowLayout='FileExplorer,TagList,BufExplorer'
+
+let proj_window_width=25
+set guifont=DejaVu_Sans_Mono:h8:cANSI
+set lines=67
+set columns=114
+
+"colorscheme zellner
+colorscheme solarized
+"set background=light
+
+
+"set foldopen=block,mark,percent,quickfix,search,tag,undo
+"set foldcolumn=2
+"set foldnestmax=1
+"set foldmethod=marker
+"autocmd BufNewFile,BufRead *.c,*.h,*.cpp setlocal foldmethod=syntax
+
+"autocmd BufNewFile,BufRead *.c,*.h,*.cpp setlocal expandtab
+
+"if &diff
+"	set guifont=ProFontWindows:h8:cANSI
+"	set columns=124
+"else
+"	set columns=80
+"endif
+
+if &diff
+   au GUIEnter * simalt ~s
+endif

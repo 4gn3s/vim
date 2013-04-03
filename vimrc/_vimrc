@@ -102,7 +102,7 @@ set lcs=tab:\|-,trail:~,nbsp:%,extends:>,precedes:<
 set list
 
 "highlightes line & column of the cursor
-set cul
+"set cul
 
 "don't redraw while running macros- faster!
 set lazyredraw
@@ -125,16 +125,11 @@ au BufWritePost *.c, *.cpp, *.h !ctags -R &
 
 set fileformat=dos
 
-" for eclim
-let g:EclimDisabled=1
-let g:EclimXmlValidate=0
-
 "Center page on the next/previous search
 noremap N Nzz
 noremap n nzz
 
-
-set background=dark
+se background=dark
 "if ! has('gui_running')
 "else
 "    let g:solarized_termcolors=16
@@ -144,12 +139,11 @@ set background=dark
 "turn on syntax highlighting
 syntax on
 
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
 colorscheme solarized
-
 
 filetype on
 
@@ -210,7 +204,18 @@ set statusline+=%*
 "set statusline=%2*%n\|%<%*%-.40F%2*\|\ %2*%M\ %3*%=%1*\%1*%{&filetype}%2.6l%2*x%1*%1.9(%c%V%)%2*[%1*%P%2*]%1*%2B
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
-set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+"set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+"
+"set statusline=%<%f\ " Filename
+"set statusline+=%w%h%m%r " Options
+"set statusline+=%{fugitive#statusline()} " Git Hotness
+"set statusline+=\ [%{&ff}/%Y] " filetype
+"set statusline+=\ [%{getcwd()}] " current dir
+"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+"set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+" Set the status line the way i like it
+set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+
 
 "map shift + tab to inverse-tab
 " for command mode
@@ -246,6 +251,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+",w to open vertical split and focus
+nnoremap <leader>w <C-w>v<C-w>l
 "clear highlight search on ,/
 nmap <silent> ,/ :nohlsearch<CR>
 
@@ -296,7 +303,7 @@ autocmd filetype python set expandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 "auto update ctags
-au BufWritePost *.c,*.cpp,*.h !ctags -R
+"au BufWritePost *.c,*.cpp,*.h !ctags -R
 
 "when in insert mode, ready to paste, if you press <F2>, Vim will switch to
 "paste mode, disabling all kinds of smartness and just pasting a whole buffer of
